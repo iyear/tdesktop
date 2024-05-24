@@ -1,4 +1,4 @@
-@echo OFF
+REM @echo OFF
 setlocal enabledelayedexpansion
 set "FullScriptPath=%~dp0"
 set "FullExecPath=%cd%"
