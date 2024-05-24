@@ -2,6 +2,11 @@ name: Windows.
 
 on:
   workflow_dispatch:
+    inputs:
+      ref:
+        description: 'ref'
+        required: true
+        type: string
   push:
     paths-ignore:
       - 'docs/**'
@@ -81,6 +86,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+          ref: ${{ inputs.ref }} 
           path: ${{ env.TBUILD }}\${{ env.REPO_NAME }}
 
       - name: Set up environment paths.
