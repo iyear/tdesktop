@@ -7,10 +7,6 @@ on:
         description: 'ref'
         required: true
         type: string
-      prepare:
-        description: 'prepare(silent skip-release)'
-        required: true
-        type: string
       configure:
         description: 'configure'
         required: false
@@ -126,8 +122,7 @@ jobs:
           GYP_MSVS_VERSION: 2022
         run: |
           cd %TBUILD%
-          %REPO_NAME%\Telegram\build\prepare\win.bat ${{ inputs.prepare }} 
-
+          %REPO_NAME%\Telegram\build\prepare\win.bat silent
       - name: Read configuration matrix.
         shell: bash
         run: |
