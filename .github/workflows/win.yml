@@ -7,6 +7,15 @@ on:
         description: 'ref'
         required: true
         type: string
+      prepare:
+        description: 'prepare(silent skip-release)'
+        required: true
+        type: string
+      configure:
+        description: 'configure'
+        required: false
+        type: string
+      
   # push:
   #   paths-ignore:
   #     - 'docs/**'
@@ -117,7 +126,7 @@ jobs:
           GYP_MSVS_VERSION: 2022
         run: |
           cd %TBUILD%
-          %REPO_NAME%\Telegram\build\prepare\win.bat silent
+          %REPO_NAME%\Telegram\build\prepare\win.bat ${{ inputs.prepare }} 
 
       - name: Read configuration matrix.
         shell: bash
@@ -174,7 +183,8 @@ jobs:
           %TDESKTOP_BUILD_GENERATOR% ^
           %TDESKTOP_BUILD_ARCH% ^
           %TDESKTOP_BUILD_API% ^
-          %TDESKTOP_BUILD_DEFINE%
+          %TDESKTOP_BUILD_DEFINE% ^
+          ${{ inputs.configure }} 
 
           cmake --build ..\out --config Release --parallel --target Telegram
 
