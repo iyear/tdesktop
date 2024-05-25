@@ -180,7 +180,7 @@ jobs:
           %TDESKTOP_BUILD_API% ^
           %TDESKTOP_BUILD_DEFINE%
 
-          cmake --build ..\out --config Release --parallel
+          cmake --build ..\out --config Release --parallel --terget Telegram
 
       - name: Move artifact.
         if: (env.UPLOAD_ARTIFACT == 'true') || (github.ref == 'refs/heads/nightly')
