@@ -174,7 +174,12 @@ jobs:
         run: |
           cd %TBUILD%\%REPO_NAME%\Telegram
 
-          call configure.bat
+          call configure.bat ^
+          %TDESKTOP_BUILD_GENERATOR% ^
+          %TDESKTOP_BUILD_ARCH% ^
+          %TDESKTOP_BUILD_API% ^
+          %TDESKTOP_BUILD_DEFINE% ^
+          ${{ inputs.configure }} 
 
           cmake --build ..\out --config Release --parallel --target Telegram
 
