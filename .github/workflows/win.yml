@@ -86,7 +86,7 @@ jobs:
         name: Native Tools Command Prompt.
         with:
           arch: ${{ matrix.arch }}
-          toolset: '17.7'
+          toolset: '17.XX'
 
       - name: Clone.
         uses: actions/checkout@v4
